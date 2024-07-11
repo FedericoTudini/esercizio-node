@@ -1,9 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { people } from '../constants/people.consts';
+import { Person } from '../models/person.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleService {
 
+  people$ = signal<Person[]>(people)
+
   constructor() { }
+
+  getPeople(): Person[] {
+    return this.people$()
+  }
+
+  addPerson(person: Person) {
+    this.people$.update(() => [...this.people$(), person])
+  }
 }
