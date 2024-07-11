@@ -1,4 +1,4 @@
-export interface Car {
+interface Car {
     make: string;
     model: string;
     year: number;
