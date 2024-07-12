@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { people } from '../constants/people.consts';
 import { Person } from '../models/person.interface';
 
@@ -8,11 +8,12 @@ import { Person } from '../models/person.interface';
 export class PeopleService {
 
   people$ = signal<Person[]>(people)
+  people = computed(this.people$)
 
   constructor() { }
 
   getPeople(): Person[] {
-    return this.people$()
+    return this.people()
   }
 
   addPerson(person: Person) {
