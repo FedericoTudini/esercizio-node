@@ -10,7 +10,7 @@ export class PeopleService {
 
   private peopleSubject = new BehaviorSubject<Person[]>(people);
 
-  people$ = this.peopleSubject.asObservable();
+  people$ = this.peopleSubject;
 
   constructor() { }
 

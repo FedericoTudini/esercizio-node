@@ -1,8 +1,8 @@
 import { Component, computed, effect, Signal, signal } from '@angular/core';
-import { PeopleService } from '../../services/people.service';
+import { PeopleService } from '../../../services/people.service';
 import { CommonModule } from '@angular/common';
-import { SearchbarComponent } from '../searchbar/searchbar.component';
-import { Person } from '../../models/person.interface';
+import { SearchbarComponent } from '../../searchbar/searchbar.component';
+import { Person } from '../../../models/person.interface';
 import { map, Observable } from 'rxjs';
 
 @Component({
@@ -14,12 +14,9 @@ import { map, Observable } from 'rxjs';
 })
 export class PeopleListComponent {
 
-
-  people!: Observable<Person[]>;
   filteredPeople!: Observable<Person[]>;
 
   constructor(private peopleService: PeopleService) {
-    this.people = this.peopleService.people$
     this.filteredPeople = this.peopleService.people$
   }  
 
@@ -39,11 +36,6 @@ export class PeopleListComponent {
       }))
     )
   }
-    
-    /* sort((a, b) => {
-      if (a.name < b.name) return order === 'asc' ? -1 : 1;
-      if (a.name > b.name) return order === 'asc' ? 1 : -1;
-      return 0;
-    }); */
+
 
 }

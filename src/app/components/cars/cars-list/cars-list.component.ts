@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Person } from '../../models/person.interface';
-import { PeopleService } from '../../services/people.service';
+import { Person } from '../../../models/person.interface';
+import { PeopleService } from '../../../services/people.service';
+
 
 @Component({
   selector: 'app-cars-list',

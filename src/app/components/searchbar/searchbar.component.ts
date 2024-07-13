@@ -20,7 +20,7 @@ export class SearchbarComponent {
   searchString!: string;
 
   constructor() {
-    this.searchString = "a"
+    this.searchString = ""
   }
 
   filterData() {
@@ -30,7 +30,7 @@ export class SearchbarComponent {
         Object.entries(item).forEach(([key, value]) => {
           concatFields += value
         });
-        return concatFields.includes(this.searchString)
+        return concatFields.toLowerCase().includes(this.searchString.toLowerCase())
       }))
     )
     this.search.emit(this.data);
