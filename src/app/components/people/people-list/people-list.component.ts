@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { SearchbarComponent } from '../../searchbar/searchbar.component';
 import { Person } from '../../../models/person.interface';
 import { map, Observable } from 'rxjs';
+import { NewPersonComponent } from '../new-person/new-person.component';
 
 @Component({
   selector: 'app-people-list',
   standalone: true,
-  imports: [CommonModule, SearchbarComponent],
+  imports: [CommonModule, SearchbarComponent, NewPersonComponent],
   templateUrl: './people-list.component.html',
   styleUrl: './people-list.component.scss'
 })
