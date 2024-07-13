@@ -1,22 +1,24 @@
-import { computed, Injectable, signal } from '@angular/core';
-import { people } from '../constants/people.consts';
+import { computed, Injectable, Signal, signal } from '@angular/core';
 import { Person } from '../models/person.interface';
+import { BehaviorSubject } from 'rxjs';
+import { people } from '../constants/people.consts';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleService {
 
-  people$ = signal<Person[]>(people)
-  people = computed(this.people$)
+  private peopleSubject = new BehaviorSubject<Person[]>(people);
+
+  people$ = this.peopleSubject.asObservable();
 
   constructor() { }
 
-  getPeople(): Person[] {
-    return this.people()
+  getPeople() {
+    return this.people$
   }
 
   addPerson(person: Person) {
-    this.people$.update(() => [...this.people$(), person])
+    this.peopleSubject.next([...this.peopleSubject.value, person]);
   }
 }

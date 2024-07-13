@@ -1,7 +1,9 @@
-import { Component, effect } from '@angular/core';
+import { Component, computed, effect, Signal, signal } from '@angular/core';
 import { PeopleService } from '../../services/people.service';
 import { CommonModule } from '@angular/common';
-import { SearchbarComponent } from "../searchbar/searchbar.component";
+import { SearchbarComponent } from '../searchbar/searchbar.component';
+import { Person } from '../../models/person.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-people-list',
@@ -12,14 +14,11 @@ import { SearchbarComponent } from "../searchbar/searchbar.component";
 })
 export class PeopleListComponent {
 
-  data: any[] = [];
+  people!: Observable<Person[]>;
 
   constructor(private peopleService: PeopleService) {
-    effect(() => {
-      this.data = this.peopleService.getPeople()
-      console.log("PEOPLE LIST")
-    })
-  }
+    this.people = this.peopleService.people$
+  }  
 
   addPerson() {
     this.peopleService.addPerson({ firstName: "Federico", lastName: "Tudini", age: 26})

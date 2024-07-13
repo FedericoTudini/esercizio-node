@@ -1,6 +1,6 @@
 <div>
-    <app-searchbar></app-searchbar>
-    <div *ngFor="let person of data">
+    <app-searchbar ></app-searchbar>
+    <div *ngFor="let person of people | async">
         {{ person.firstName }}
     </div>
     <button (click)="addPerson()">Add person</button>
