@@ -1,7 +1,9 @@
 <div>
-    <app-searchbar ></app-searchbar>
-    <div *ngFor="let person of people | async">
+    <app-searchbar (search)="onSearch($event)" [data]="filteredPeople"></app-searchbar>
+    <div *ngFor="let person of filteredPeople | async">
         {{ person.firstName }}
     </div>
     <button (click)="addPerson()">Add person</button>
+    <button (click)="sortByName('asc')">Sort by Name Asc</button>
+    <button (click)="sortByName('desc')">Sort by Name Desc</button>
 </div>
