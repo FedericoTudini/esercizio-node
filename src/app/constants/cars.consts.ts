@@ -1,6 +1,6 @@
 import { Car } from "../models/car.interface";
 
-const cars: Car[] = [
+export const cars: Car[] = [
     {
         make: "Toyota",
         model: "Camry",
