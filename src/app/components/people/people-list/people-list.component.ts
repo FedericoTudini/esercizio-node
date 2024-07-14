@@ -21,10 +21,6 @@ export class PeopleListComponent {
     this.filteredPeople = this.peopleService.people$
   }  
 
-  addPerson() {
-    this.peopleService.addPerson({ firstName: "Federico", lastName: "Tudini", age: 26})
-  }
-
   onSearch(data: Observable<any[]>) {
     this.filteredPeople = data
   }
@@ -36,6 +32,7 @@ export class PeopleListComponent {
         return order === 'desc' ? -a.firstName.localeCompare(b.firstName) : a.firstName.localeCompare(b.firstName)
       }))
     )
+    console.log(this.filteredPeople)
   }
 
 
