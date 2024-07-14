@@ -18,7 +18,7 @@ export class CarsService {
     return this.cars$
   }
 
-  addPerson(car: Car) {
+  addCar(car: Car) {
     this.carsSubject.next([...this.carsSubject.value, car]);
   }
 }

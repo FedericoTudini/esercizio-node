@@ -1,4 +1,4 @@
-import { Component, computed, effect, Signal, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { PeopleService } from '../../../services/people.service';
 import { CommonModule } from '@angular/common';
 import { SearchbarComponent } from '../../searchbar/searchbar.component';

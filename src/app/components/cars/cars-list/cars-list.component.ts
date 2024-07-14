@@ -1,27 +1,39 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Person } from '../../../models/person.interface';
-import { PeopleService } from '../../../services/people.service';
+import { map, Observable } from 'rxjs';
+import { CarsService } from '../../../services/cars.service';
+import { Car } from '../../../models/car.interface';
+import { SearchbarComponent } from '../../searchbar/searchbar.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { NewCarComponent } from '../new-car/new-car.component';
 
 
 @Component({
   selector: 'app-cars-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SearchbarComponent, NewCarComponent, MatCardModule, MatButtonModule],
   templateUrl: './cars-list.component.html',
   styleUrl: './cars-list.component.scss'
 })
 export class CarsListComponent {
 
-  people!: Observable<Person[]>;
+  cars!: Observable<Car[]>;
 
-  constructor(private peopleService: PeopleService) {
-    this.people = this.peopleService.people$
+  constructor(private carsService: CarsService) {
+    this.cars = this.carsService.cars$
   }  
 
-  addPerson() {
-    this.peopleService.addPerson({ firstName: "Federico", lastName: "Tudini", age: 26})
+  onSearch(data: Observable<any[]>) {
+    this.cars = data
   }
 
+
+  sortByModel(order: string) {
+    this.cars = this.cars.pipe(
+      map(arr => arr.sort((a, b) => {
+        return order === 'desc' ? -a.model.localeCompare(b.model) : a.model.localeCompare(b.model)
+      }))
+    )
+  }
 }

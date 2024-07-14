@@ -1,0 +1,23 @@
+#input-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .input-item {
+    margin-right: 15px;
+  }
+  
+  #container {
+    padding: 5px 15px;
+  }
+  
+  mat-card {
+      background-color: #222232;
+  }
+  
+  h6 {
+      color: white;
+  }

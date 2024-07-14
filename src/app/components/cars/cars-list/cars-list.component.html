@@ -1,0 +1,56 @@
+<div id="container">
+  <mat-card>
+    <mat-card-content>
+      <h3><b>Lista Automobili</b></h3>
+      <div class="flex-row align-center">
+        <div style="width: 50%">
+          <app-searchbar
+            (search)="onSearch($event)"
+            [data]="cars"
+          ></app-searchbar>
+        </div>
+        <button
+          class="sort-button"
+          mat-raised-button
+          color="primary"
+          (click)="sortByModel('asc')"
+        >
+          Sort ASC
+        </button>
+        <button
+          class="sort-button"
+          mat-raised-button
+          color="primary"
+          (click)="sortByModel('desc')"
+        >
+          Sort DESC
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th>Modello</th>
+            <th>Anno</th>
+            <th>Colore</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (car of cars | async; track $index) {
+          <tr>
+            <td>{{ car.make }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.year }}</td>
+            <td>{{ car.color }}</td>
+          </tr>
+          } @empty {
+          <p>Nessuno elemento trovato.</p>
+          }
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="flex-row justify-start">
+  <app-new-car></app-new-car>
+</div>

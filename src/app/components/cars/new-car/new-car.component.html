@@ -1,0 +1,62 @@
+<div id="container">
+  <mat-card>
+    <mat-card-content>
+      <h6>Aggiungi Automobile</h6>
+      <div>
+        <form
+          [formGroup]="carsForm"
+          (ngSubmit)="onSubmit()"
+          id="input-container"
+        >
+          <mat-form-field class="input-item">
+            <mat-label>Marca</mat-label>
+            <input matInput formControlName="make" />
+            @if (carsForm.get('make')?.hasError('required')) {
+            <mat-error>Campo obbligatorio</mat-error>
+            } @if (carsForm.get('make')?.hasError('maxlength')) {
+            <mat-error>La marca non può superare i 70 caratteri</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="input-item">
+            <mat-label>Modello</mat-label>
+            <input matInput formControlName="model" />
+            @if (carsForm.get('model')?.hasError('required')) {
+            <mat-error>Campo obbligatorio</mat-error>
+            } @if (carsForm.get('model')?.hasError('maxlength')) {
+            <mat-error>Il modello non può superare i 70 caratteri</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="input-item">
+            <mat-label>Anno</mat-label>
+            <input
+              matInput
+              type="number"
+              min="1800"
+              max="2024"
+              formControlName="year"
+            />
+            @if (carsForm.get('year')?.hasError('required')) {
+            <mat-error>Campo obbligatorio</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="input-item">
+            <mat-label>Colore</mat-label>
+            <input matInput formControlName="color" />
+          </mat-form-field>
+
+          <button
+            class="input-item"
+            mat-flat-button
+            color="primary"
+            type="submit"
+          >
+            Aggiungi
+          </button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

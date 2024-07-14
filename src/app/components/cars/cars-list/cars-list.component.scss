@@ -1,0 +1,37 @@
+#container {
+    padding: 5px 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+h3, p {
+    color: white;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  color: white;
+}
+
+th {
+    background-color: rgba(36, 107, 253, 1);
+}
+
+mat-card {
+    background-color: #222232;
+}
+
+mat-card-content {
+    overflow-x: auto;
+}
+
+.sort-button {
+    margin-left: 10px;
+}
+
