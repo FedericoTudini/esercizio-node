@@ -2,19 +2,35 @@
   <mat-card>
     <mat-card-content>
       <h6>Aggiungi Persona</h6>
-      <div >
-        <form [formGroup]="personForm" (ngSubmit)="onSubmit()" id="input-container">
+      <div>
+        <form
+          [formGroup]="personForm"
+          (ngSubmit)="onSubmit()"
+          id="input-container"
+        >
           <mat-form-field class="input-item">
             <mat-label>Nome</mat-label>
             <input matInput formControlName="firstName" />
+            @if (personForm.get('firstName')?.hasError('required')) {
+            <mat-error>Campo obbligatorio</mat-error>
+            }
+            @if (personForm.get('firstName')?.hasError('minlength')) {
+                <mat-error>Il nome deve essere di almeno 2 caratteri</mat-error>
+                }
           </mat-form-field>
 
           <mat-form-field class="input-item">
             <mat-label>Cognome</mat-label>
             <input matInput formControlName="lastName" />
+            @if (personForm.get('lastName')?.hasError('required')) {
+            <mat-error>Campo obbligatorio</mat-error>
+            }
+            @if (personForm.get('lastName')?.hasError('minlength')) {
+            <mat-error>Il cognome deve essere di almeno 2 caratteri</mat-error>
+            }
           </mat-form-field>
 
-          <mat-form-field class="input-item" >
+          <mat-form-field class="input-item">
             <mat-label>Età</mat-label>
             <input
               matInput
@@ -23,11 +39,20 @@
               max="120"
               formControlName="age"
             />
+            @if (personForm.get('age')?.hasError('required')) {
+                <mat-error>Campo obbligatorio</mat-error>
+                }
+            @if (personForm.get('age')?.hasError('min') || personForm.get('age')?.hasError('max')) {
+                <mat-error>Età non valida</mat-error>
+                }
           </mat-form-field>
 
           <mat-form-field class="input-item">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" />
+            @if (personForm.get('email')?.hasError('email')) {
+            <mat-error>Inserire indirizzo valido</mat-error>
+            }
           </mat-form-field>
 
           <button
@@ -36,7 +61,7 @@
             color="primary"
             type="submit"
           >
-            Submit
+            Aggiungi
           </button>
         </form>
       </div>
