@@ -5,11 +5,12 @@ import { SearchbarComponent } from '../../searchbar/searchbar.component';
 import { Person } from '../../../models/person.interface';
 import { map, Observable } from 'rxjs';
 import { NewPersonComponent } from '../new-person/new-person.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-people-list',
   standalone: true,
-  imports: [CommonModule, SearchbarComponent, NewPersonComponent],
+  imports: [CommonModule, SearchbarComponent, NewPersonComponent, MatCardModule],
   templateUrl: './people-list.component.html',
   styleUrl: './people-list.component.scss'
 })
