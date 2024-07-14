@@ -1,9 +1,9 @@
 <div id="container">
   <mat-card>
-    <mat-card-title>Aggiungi Persona</mat-card-title>
     <mat-card-content>
-      <div id="input-container">
-        <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+      <h6>Aggiungi Persona</h6>
+      <div >
+        <form [formGroup]="personForm" (ngSubmit)="onSubmit()" id="input-container">
           <mat-form-field class="input-item">
             <mat-label>Nome</mat-label>
             <input matInput formControlName="firstName" />
@@ -14,7 +14,7 @@
             <input matInput formControlName="lastName" />
           </mat-form-field>
 
-          <mat-form-field class="input-item">
+          <mat-form-field class="input-item" >
             <mat-label>Età</mat-label>
             <input
               matInput
@@ -32,10 +32,9 @@
 
           <button
             class="input-item"
-            mat-raised-button
+            mat-flat-button
             color="primary"
             type="submit"
-            [disabled]="!personForm.valid"
           >
             Submit
           </button>

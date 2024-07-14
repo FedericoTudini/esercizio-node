@@ -3,10 +3,12 @@
     <mat-card-content>
       <h3><b>Lista Persone</b></h3>
       <div class="flex-row align-center">
-        <app-searchbar
-          (search)="onSearch($event)"
-          [data]="people"
-        ></app-searchbar>
+        <div style="width: 50%;">
+            <app-searchbar
+              (search)="onSearch($event)"
+              [data]="people"
+            ></app-searchbar>
+        </div>
         <button class="sort-button" mat-raised-button color="primary" (click)="sortByName('asc')">
           Sort ASC
         </button>
@@ -39,6 +41,6 @@
     </mat-card-content>
   </mat-card>
 </div>
-<div>
+<div class="flex-row justify-start">
   <app-new-person></app-new-person>
 </div>
