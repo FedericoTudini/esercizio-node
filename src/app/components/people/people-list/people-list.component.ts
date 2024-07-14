@@ -6,11 +6,12 @@ import { Person } from '../../../models/person.interface';
 import { map, Observable } from 'rxjs';
 import { NewPersonComponent } from '../new-person/new-person.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-people-list',
   standalone: true,
-  imports: [CommonModule, SearchbarComponent, NewPersonComponent, MatCardModule],
+  imports: [CommonModule, SearchbarComponent, NewPersonComponent, MatCardModule, MatButtonModule],
   templateUrl: './people-list.component.html',
   styleUrl: './people-list.component.scss'
 })

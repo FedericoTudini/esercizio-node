@@ -1,12 +1,18 @@
 <div id="container">
   <mat-card>
     <mat-card-content>
-      <h2><b>Persone</b></h2>
-      <div id="actions-container">
+      <h3><b>Lista Persone</b></h3>
+      <div class="flex-row align-center">
         <app-searchbar
-    (search)="onSearch($event)"
-    [data]="people"
-  ></app-searchbar>
+          (search)="onSearch($event)"
+          [data]="people"
+        ></app-searchbar>
+        <button class="sort-button" mat-raised-button color="primary" (click)="sortByName('asc')">
+          Sort ASC
+        </button>
+        <button class="sort-button" mat-raised-button color="primary" (click)="sortByName('desc')">
+          Sort DESC
+        </button>
       </div>
       <table>
         <thead>
@@ -32,9 +38,6 @@
       </table>
     </mat-card-content>
   </mat-card>
-
-  <button (click)="sortByName('asc')">Sort Asc</button>
-  <button (click)="sortByName('desc')">Sort Desc</button>
 </div>
 <div>
   <app-new-person></app-new-person>

@@ -13,4 +13,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     flex-direction: column;
 }
 
+.justify-center {
+    justify-content: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
 
