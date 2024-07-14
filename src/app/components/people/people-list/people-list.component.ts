@@ -16,24 +16,23 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class PeopleListComponent {
 
-  filteredPeople!: Observable<Person[]>;
+  people!: Observable<Person[]>;
 
   constructor(private peopleService: PeopleService) {
-    this.filteredPeople = this.peopleService.people$
+    this.people = this.peopleService.people$
   }  
 
   onSearch(data: Observable<any[]>) {
-    this.filteredPeople = data
+    this.people = data
   }
 
 
   sortByName(order: string) {
-    this.filteredPeople = this.filteredPeople.pipe(
+    this.people = this.people.pipe(
       map(arr => arr.sort((a, b) => {
         return order === 'desc' ? -a.firstName.localeCompare(b.firstName) : a.firstName.localeCompare(b.firstName)
       }))
     )
-    console.log(this.filteredPeople)
   }
 
 

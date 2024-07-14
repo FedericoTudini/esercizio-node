@@ -1,12 +1,13 @@
 <div id="container">
-  <app-searchbar
-    (search)="onSearch($event)"
-    [data]="filteredPeople"
-  ></app-searchbar>
   <mat-card>
-    <mat-card-title> </mat-card-title>
     <mat-card-content>
       <h2><b>Persone</b></h2>
+      <div id="actions-container">
+        <app-searchbar
+    (search)="onSearch($event)"
+    [data]="people"
+  ></app-searchbar>
+      </div>
       <table>
         <thead>
           <tr>
@@ -17,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (person of filteredPeople | async; track $index) {
+          @for (person of people | async; track $index) {
           <tr>
             <td>{{ person.firstName }}</td>
             <td>{{ person.lastName }}</td>
@@ -25,7 +26,7 @@
             <td>{{ person.email }}</td>
           </tr>
           } @empty {
-          <h4>Nessuno elemento trovato.</h4>
+          <p>Nessuno elemento trovato.</p>
           }
         </tbody>
       </table>

@@ -1,15 +1,14 @@
 import { Component, effect, EventEmitter, Input, input, OnInit, Output, Signal, signal, WritableSignal } from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Person } from '../../models/person.interface';
-import { filter, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-searchbar',
   standalone: true,
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './searchbar.component.html',
   styleUrl: './searchbar.component.scss'
 })
@@ -17,10 +16,12 @@ export class SearchbarComponent {
 
   @Output() search = new EventEmitter<Observable<any[]>>();
   @Input() data!: Observable<any[]>;
-  searchString!: string;
+  searchForm!: FormGroup;
 
   constructor() {
-    this.searchString = ""
+    this.searchForm = new FormGroup({
+      search: new FormControl(''),
+    });
   }
 
   filterData() {
@@ -30,7 +31,7 @@ export class SearchbarComponent {
         Object.entries(item).forEach(([key, value]) => {
           concatFields += value
         });
-        return concatFields.toLowerCase().includes(this.searchString.toLowerCase())
+        return concatFields.toLowerCase().includes(this.searchForm.value.search.toLowerCase())
       }))
     )
     this.search.emit(this.data);

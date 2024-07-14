@@ -1,3 +1,5 @@
+import { Car } from "../models/car.interface";
+
 const cars: Car[] = [
     {
         make: "Toyota",
