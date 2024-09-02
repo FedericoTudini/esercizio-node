@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { PeopleService } from '../../../services/people.service';
 import { Person } from '../../../models/person.interface';
+import {PersonForm} from "./models/person-form.model";
 
 @Component({
   selector: 'app-new-person',
@@ -17,7 +18,7 @@ import { Person } from '../../../models/person.interface';
 })
 export class NewPersonComponent {
 
-  personForm!: FormGroup;
+  personForm!: FormGroup<PersonForm>;
 
   constructor(formBuilder: FormBuilder, private peopleService: PeopleService) {
     this.personForm = personForm(formBuilder)
@@ -31,7 +32,7 @@ export class NewPersonComponent {
 
   onSubmit(): void {
     if (this.personForm.valid) {
-      this.addPerson(this.personForm.value)
+      this.addPerson(this.personForm.value.)
     }
   }
 
